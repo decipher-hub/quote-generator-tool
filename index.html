@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freelance Quote Generator</title>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
   * {
@@ -87,7 +85,6 @@
   <div class="container">
     <h2>Quote Generator</h2>
     <input type="text" id="name" placeholder="Client Name" />
-    <input type="text" id="email" placeholder="Client Email" />
     <input type="text" id="service" placeholder="Service Type" />
     <input type="number" id="hours" placeholder="Estimated Hours" />
     <input type="number" id="rate" placeholder="Hourly Rate" />
@@ -103,14 +100,10 @@
       <option value="assertive">Assertive</option>
     </select>
     <button onclick="generateQuote()">Generate Quote</button>
-    <button onclick="downloadPDF()">Download Quote (PDF)</button>
-    <button onclick="sendEmail()">Send Quote via Email</button>
     <div id="output"></div>
   </div>
 
   <script>
-    emailjs.init("YKFtcfF_GHWAjRSO8");
-
     let currentQuote = "";
 
     function generateMessageTone(tone, name, total, service, currency) {
@@ -140,34 +133,6 @@
       const total = (hours * rate).toFixed(2);
       currentQuote = generateMessageTone(tone, name, total, service, currency);
       document.getElementById('output').innerText = currentQuote;
-    }
-
-    function downloadPDF() {
-      const element = document.getElementById('output');
-      html2pdf().from(element).save("quote.pdf");
-    }
-
-    function sendEmail() {
-      const email = document.getElementById('email').value;
-      const name = document.getElementById('name').value;
-
-      if (!currentQuote || !email) {
-        alert("Please generate the quote and enter an email first.");
-        return;
-      }
-
-      const templateParams = {
-        to_name: name,
-        quote: currentQuote,
-        to_email: email
-      };
-
-      emailjs.send("service_fdtab09", "template_7k2z1hh", templateParams)
-        .then(() => {
-          alert("Quote sent successfully!");
-        }, () => {
-          alert("Failed to send email. Please try again.");
-        });
     }
   </script>
 </body>
