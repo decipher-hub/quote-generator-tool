@@ -4,42 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freelance Quote Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    button {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-    }
-    #output {
-      margin-top: 20px;
-      background: #e9ffe9;
-      padding: 10px;
-      border-radius: 8px;
-      white-space: pre-wrap;
-    }
-  </style>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    color: #FAFAFA;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background: #1C1C1E;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(248, 198, 48, 0.3);
+    width: 360px;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .container:hover {
+    box-shadow: 0 0 35px rgba(248, 198, 48, 0.5);
+  }
+  h2 {
+    color: #F8C630;
+    margin-bottom: 20px;
+  }
+  input,
+  button,
+  select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  input,
+  select {
+    background: #333;
+    color: #FAFAFA;
+  }
+  input::placeholder {
+    color: #ccc;
+  }
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+  }
+  button {
+    background: linear-gradient(135deg, #1DAA55, #F8C630);
+    color: #1C1C1E;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: linear-gradient(135deg, #F8C630, #1DAA55);
+  }
+  #output {
+    margin-top: 20px;
+    background: #29292B;
+    padding: 15px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    border-left: 4px solid #F8C630;
+    font-size: 0.95rem;
+  }
+</style>
 </head>
 <body>
   <div class="container">
